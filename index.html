@@ -21,13 +21,69 @@
           <div class="navbar-nav">
             <ul class="ul-defaults-none main-menu">
               <li class="nav-item">home</li>
-              <li class="nav-item">about me</li>
-              <li class="nav-item">contact</li>
+              <li class="nav-item" data-open="about">about me</li>
+              <li class="nav-item" data-open="contact">contact</li>
             </ul>
           </div>
         </nav>
       </header>
+
+      <!-- Hero Section -->
+      <section class="hero-bg">
+        <div class="container">
+          <div class="hero-content">
+            <div class="code-icon">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h2 class="header-lg">Code. Eat. Sleep.</h2>
+            <div class="sub-header">
+              I create meaningful solutions for your brands and products
+              <br />
+              Give your customers the best experience possible.
+            </div>
+            <div>
+              <a class="btn btn-primary round-pill" href="#" data-open="contact">Let's Talk Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- Modals -->
+    <!-- About Page Modal -->
+    <div id="about" class="full-site-modal page-block" data-animation="zoomInOut">
+      <header class="modal-header">
+        <h3>ABOUT PAGE</h3>
+        <i class="fa-solid fa-xmark" data-close></i>
+      </header>
+      <div class="modal-body">
+        <div class="img-wrapper"><img src="/assets/images/Chance_Ludwick-md-blue.jpg" alt="head shot" /></div>
+        <h2>Chance Ludwick</h2>
+        <p>text 1</p>
+        <p>text 2</p>
+        <div>
+          <div>Email Me:</div>
+          <a href="maito:chanceludwick@gmail.com">chanceludwick@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Page Modal -->
+    <div id="contact" class="full-site-modal page-block" data-animation="zoomInOut">
+      <header class="modal-header">
+        <h3>CONTACT PAGE</h3>
+        <i class="fa-solid fa-xmark" data-close></i>
+      </header>
+      <div class="modal-body">
+        <div class="img-wrapper"><img src="/assets/images/Chance_Ludwick-md-blue.jpg" alt="head shot" /></div>
+        <h2>Chance Ludwick</h2>
+        <p>text 1</p>
+        <p>text 2</p>
+        <div>
+          <div>Email Me:</div>
+          <a href="maito:chanceludwick@gmail.com">chanceludwick@gmail.com</a>
+        </div>
+      </div>
+    </div>
 
     <script src="./js/main.js"></script>
   </body>

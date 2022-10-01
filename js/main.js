@@ -14,6 +14,60 @@ const isVisible = 'is-visible';
 const dataFilter = '[data-filter]';
 const portfolioData = '[data-item]';
 
+const cardInfoArray = [];
+
+class PortfolioCard {
+  constructor(productTitle, sectionTitle, image) {
+    this.productTitle = productTitle;
+    this.sectionTitle = sectionTitle;
+    this.image = image;
+    cardInfoArray.push(this);
+  }
+}
+
+const portfolioCard1 = new PortfolioCard('Food Website', 'Web Development', 'assets/images/portfolio-1.jpg');
+const portfolioCard2 = new PortfolioCard('Social Network', 'UI Designs', 'assets/images/portfolio-2.jpg');
+const portfolioCard3 = new PortfolioCard('Online Store', 'Web Development', 'assets/images/portfolio-3.jpg');
+const portfolioCard4 = new PortfolioCard('Meeting App', 'App Development', 'assets/images/portfolio-4.jpg');
+const portfolioCard5 = new PortfolioCard('Pin Website', 'Web Development', 'assets/images/portfolio-5.jpg');
+const portfolioCard6 = new PortfolioCard('Weather App', 'App Development', 'assets/images/portfolio-6.jpg');
+const portfolioCard7 = new PortfolioCard('VPN App', 'UI Designs', 'assets/images/portfolio-7.jpg');
+const portfolioCard8 = new PortfolioCard('News App', 'App Development', 'assets/images/portfolio-8.jpg');
+
+const cardContainer = document.querySelector('.portfolio-grid');
+
+cardInfoArray.forEach((item) => {
+  const productTitle = item.productTitle;
+  const sectionTitle = item.sectionTitle;
+  const image = item.image;
+  let cardDiv = document.createElement('div');
+  cardDiv.innerHTML = `
+  <div class="card-body">
+    <img src="${image}" alt="portfolio-icon" />
+    <a href="#" class="card-popup-box">
+      <div>${sectionTitle}</div>
+      <h3>${productTitle}</h3>
+    </a>
+  </div>
+  `;
+  cardDiv.classList.add('portfolio-card');
+  cardContainer.appendChild(cardDiv);
+});
+
+// portfolioCardData.forEach((item) => {});
+
+// portfolioCardTemplate.innerHTML = `
+// <div class="portfolio-card" data-item="web">
+//   <div class="card-body">
+//     <img src="${image}" alt="portfolio-icon" />
+//     <a href="#" class="card-popup-box">
+//       <div>${sectionTitle}</div>
+//       <h3>${productTitle}</h3>
+//     </a>
+//   </div>
+// </div>
+// `;
+
 const root = document.documentElement;
 
 /* Theme */

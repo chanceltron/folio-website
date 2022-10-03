@@ -14,6 +14,114 @@ const isVisible = 'is-visible';
 const dataFilter = '[data-filter]';
 const portfolioData = '[data-item]';
 
+const cardInfoArray = [];
+
+class PortfolioCard {
+  constructor(id, productTitle, sectionTitle, image, header, info1, info2) {
+    this.id = id;
+    this.productTitle = productTitle;
+    this.sectionTitle = sectionTitle;
+    this.image = image;
+    this.header = header;
+    this.info1 = info1;
+    this.info2 = info2;
+    cardInfoArray.push(this);
+  }
+}
+
+const portfolioCard1 = new PortfolioCard(
+  'web-1',
+  'Food Website',
+  'Web Development',
+  'assets/images/portfolio-1.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard2 = new PortfolioCard(
+  'ui1',
+  'Social Network',
+  'UI Designs',
+  'assets/images/portfolio-2.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard3 = new PortfolioCard(
+  'web2',
+  'Online Store',
+  'Web Development',
+  'assets/images/portfolio-3.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard4 = new PortfolioCard(
+  'app1',
+  'Meeting App',
+  'App Development',
+  'assets/images/portfolio-4.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard5 = new PortfolioCard(
+  'web3',
+  'Pin Website',
+  'Web Development',
+  'assets/images/portfolio-5.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard6 = new PortfolioCard(
+  'app2',
+  'Weather App',
+  'App Development',
+  'assets/images/portfolio-6.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard7 = new PortfolioCard(
+  'ui2',
+  'VPN App',
+  'UI Designs',
+  'assets/images/portfolio-7.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+const portfolioCard8 = new PortfolioCard(
+  'app3',
+  'News App',
+  'App Development',
+  'assets/images/portfolio-8.jpg',
+  'Lorem ipsum dolor sit amet',
+  'Etiam tempor orci eu lobortis elementum nibh tellus. Nunc lobortis mattis aliquam faucibus purus in massa tempor.',
+  'Sed viverra ipsum nunc aliquet. Velit scelerisque in dictum non consectetur.'
+);
+
+const cardContainer = document.querySelector('.portfolio-grid');
+
+cardInfoArray.forEach((item) => {
+  const productTitle = item.productTitle;
+  const sectionTitle = item.sectionTitle;
+  const image = item.image;
+  let cardDiv = document.createElement('div');
+  cardDiv.innerHTML = `
+  <div class="card-body">
+    <img src="${image}" alt="portfolio-icon" />
+    <div class="card-popup-box">
+      <div>${sectionTitle}</div>
+      <h3>${productTitle}</h3>
+    </div>
+  </div>
+  `;
+  cardDiv.classList.add('portfolio-card');
+  cardContainer.appendChild(cardDiv);
+});
+
 const root = document.documentElement;
 
 /* Theme */

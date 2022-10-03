@@ -17,8 +17,9 @@ const portfolioData = '[data-item]';
 const cardInfoArray = [];
 
 class PortfolioCard {
-  constructor(id, productTitle, sectionTitle, image, header, info1, info2) {
+  constructor(id, dataItem, productTitle, sectionTitle, image, header, info1, info2) {
     this.id = id;
+    this.dataItem = dataItem;
     this.productTitle = productTitle;
     this.sectionTitle = sectionTitle;
     this.image = image;
@@ -30,7 +31,8 @@ class PortfolioCard {
 }
 
 const portfolioCard1 = new PortfolioCard(
-  'web-1',
+  'web1',
+  'web',
   'Food Website',
   'Web Development',
   'assets/images/portfolio-1.jpg',
@@ -40,6 +42,7 @@ const portfolioCard1 = new PortfolioCard(
 );
 const portfolioCard2 = new PortfolioCard(
   'ui1',
+  'ui',
   'Social Network',
   'UI Designs',
   'assets/images/portfolio-2.jpg',
@@ -49,6 +52,7 @@ const portfolioCard2 = new PortfolioCard(
 );
 const portfolioCard3 = new PortfolioCard(
   'web2',
+  'web',
   'Online Store',
   'Web Development',
   'assets/images/portfolio-3.jpg',
@@ -58,6 +62,7 @@ const portfolioCard3 = new PortfolioCard(
 );
 const portfolioCard4 = new PortfolioCard(
   'app1',
+  'app',
   'Meeting App',
   'App Development',
   'assets/images/portfolio-4.jpg',
@@ -67,6 +72,7 @@ const portfolioCard4 = new PortfolioCard(
 );
 const portfolioCard5 = new PortfolioCard(
   'web3',
+  'web',
   'Pin Website',
   'Web Development',
   'assets/images/portfolio-5.jpg',
@@ -76,6 +82,7 @@ const portfolioCard5 = new PortfolioCard(
 );
 const portfolioCard6 = new PortfolioCard(
   'app2',
+  'app',
   'Weather App',
   'App Development',
   'assets/images/portfolio-6.jpg',
@@ -85,6 +92,7 @@ const portfolioCard6 = new PortfolioCard(
 );
 const portfolioCard7 = new PortfolioCard(
   'ui2',
+  'ui',
   'VPN App',
   'UI Designs',
   'assets/images/portfolio-7.jpg',
@@ -94,6 +102,7 @@ const portfolioCard7 = new PortfolioCard(
 );
 const portfolioCard8 = new PortfolioCard(
   'app3',
+  'app',
   'News App',
   'App Development',
   'assets/images/portfolio-8.jpg',
@@ -105,20 +114,17 @@ const portfolioCard8 = new PortfolioCard(
 const cardContainer = document.querySelector('.portfolio-grid');
 
 cardInfoArray.forEach((item) => {
-  const productTitle = item.productTitle;
-  const sectionTitle = item.sectionTitle;
-  const image = item.image;
   let cardDiv = document.createElement('div');
   cardDiv.innerHTML = `
+  <div class="portfolio-card" data-item="${item.dataItem}" data-open="${item.id}">
   <div class="card-body">
-    <img src="${image}" alt="portfolio-icon" />
-    <div class="card-popup-box">
-      <div>${sectionTitle}</div>
-      <h3>${productTitle}</h3>
-    </div>
+  <img src="${item.image}" alt="portfolio-icon" />
+  <div class="card-popup-box">
+  <div>${item.sectionTitle}</div>
+  <h3>${item.productTitle}</h3>
+  </div>
   </div>
   `;
-  cardDiv.classList.add('portfolio-card');
   cardContainer.appendChild(cardDiv);
 });
 
@@ -138,6 +144,44 @@ const searchBox = document.querySelector('#search');
 const openModal = document.querySelectorAll(modalOpen);
 const closeModal = document.querySelectorAll(modalClose);
 
+const portfolioModals = document.querySelector('.portfolio-modals');
+//
+const addPortfolioModal = (modalId) => {
+  cardInfoArray.forEach((item) => {
+    if (item.id === modalId) {
+      let modalDiv = document.createElement('div');
+      modalDiv.innerHTML = `
+      <div id="${item.id}" class="modal" data-animation="slideInOutTop">
+            <div class="modal-dialog">
+              <header class="modal-header">
+                <h3>${item.productTitle}</h3>
+                <i class="fa-solid fa-xmark" data-close></i>
+              </header>
+              <div class="modal-body">
+                <div class="img-wrapper">
+                  <img src="${item.image}" alt="portfolio-icon" />
+                </div>
+                <div class="text-wrapper">
+                  <p><strong>${item.header}</strong></p>
+                  <p>${item.info1}</p>
+                  <p>${item.info2}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          `;
+      portfolioModals.appendChild(modalDiv);
+      modalDiv.classList.add('modal-container');
+    }
+  });
+};
+
+const removePortfolioModal = async () => {
+  const modalContainer = document.querySelector('.modal-container');
+  setTimeout(() => {
+    portfolioModals.removeChild(modalContainer);
+  }, 500);
+};
 //
 const setActive = (elm, selector) => {
   if (document.querySelector(`${selector}.${active}`) !== null) {
@@ -220,7 +264,10 @@ for (const link of filterLink) {
 for (const elm of openModal) {
   elm.addEventListener('click', function () {
     const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
+    addPortfolioModal(modalId);
+    setTimeout(() => {
+      document.getElementById(modalId).classList.add(isVisible);
+    }, 50);
   });
 }
 
@@ -234,11 +281,13 @@ for (const elm of closeModal) {
 document.addEventListener('click', (e) => {
   if (e.target === document.querySelector('.modal.is-visible')) {
     document.querySelector('.modal.is-visible').classList.remove(isVisible);
+    removePortfolioModal();
   }
 });
 
 document.addEventListener('keyup', (e) => {
   if (e.key === 'Escape') {
     document.querySelector('.modal.is-visible').classList.remove(isVisible);
+    removePortfolioModal();
   }
 });

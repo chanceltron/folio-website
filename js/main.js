@@ -44,29 +44,15 @@ cardInfoArray.forEach((item) => {
   cardDiv.innerHTML = `
   <div class="card-body">
     <img src="${image}" alt="portfolio-icon" />
-    <a href="#" class="card-popup-box">
+    <div class="card-popup-box">
       <div>${sectionTitle}</div>
       <h3>${productTitle}</h3>
-    </a>
+    </div>
   </div>
   `;
   cardDiv.classList.add('portfolio-card');
   cardContainer.appendChild(cardDiv);
 });
-
-// portfolioCardData.forEach((item) => {});
-
-// portfolioCardTemplate.innerHTML = `
-// <div class="portfolio-card" data-item="web">
-//   <div class="card-body">
-//     <img src="${image}" alt="portfolio-icon" />
-//     <a href="#" class="card-popup-box">
-//       <div>${sectionTitle}</div>
-//       <h3>${productTitle}</h3>
-//     </a>
-//   </div>
-// </div>
-// `;
 
 const root = document.documentElement;
 

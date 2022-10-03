@@ -236,6 +236,7 @@
 .portfolio-card:hover .card-popup-box {
   bottom: 20px;
   opacity: 1;
+  cursor: pointer;
 }
 
 .card-popup-box div {
